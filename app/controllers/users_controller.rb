@@ -30,9 +30,9 @@ class UsersController < ApplicationController
       @user.send_activation_email
       flash[:info] = "Please check your email to activate your account."
       # production環境でsmtpサーバを使いたくなかったので、メッセージにアクティベートのリンクを表示
-      flash[:info] << "<br><a href='"
-      flash[:info] <<    edit_account_activation_url(@user.activation_token, email: @user.email)
-      flash[:info] << "'>activate</a>"
+      flash[:info] += "<br><div class='test'><a href='"
+      flash[:info] +=    edit_account_activation_url(@user.activation_token, email: @user.email)
+      flash[:info] += "'>activate</a></div>"
       redirect_to root_url
     else
       render 'new'
